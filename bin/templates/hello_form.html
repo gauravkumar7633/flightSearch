@@ -1,15 +1,26 @@
+$def with (cities, error)
 <html>
     <head>
-        <title>Sample Web Form</title>
+        <title>Sample Flight Booking System</title>
     </head>
 <body>
 
 <h1>Welcome to flight booking system</h1>
 
+$if error != 'true':
+	$error
 <form action="/hello" method="POST">
-    Source: <input type="text" name="source">
+    Source: <select name="source" style="text-transform: capitalize;">
+    	<option value="" disabled selected>Select your source </option>
+    	$for city in cities:
+    		<option value="$city" style="text-transform: capitalize;">$city</option>
+    	</select>
     <br/>
-    Destination: <input type="text" name="destination">
+    Destination: <select name="destination" style="text-transform: capitalize;">
+    	<option value="" disabled selected>Select your destination </option>
+    	$for city in cities:
+    		<option value="$city" style="text-transform: capitalize;">$city</option>
+    	</select>
     <br/>
     <input type="submit">
 </form>

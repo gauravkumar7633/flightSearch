@@ -6,9 +6,15 @@ $def with (source, destination, path)
     </head>
 <body>
 
-    here are the flghts from $source to $destination.
-    $path
-
-
+<h2>
+    Here are the flghts from $source to $destination.
+</h2>
+<ol>
+$for paths in path:
+	<li style="padding-left: 30px;">
+	$for v in paths:
+		$v
+	</li>
+</ol>
 </body>
 </html>

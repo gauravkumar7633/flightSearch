@@ -1,0 +1,17 @@
+$def with (source, destination, paths)
+
+<html>
+    <head>
+        <title>Gothons Of Planet Percal #25</title>
+    </head>
+<body>
+
+$if source && destination:
+    here are the flghts from $source to $destination.
+$else:
+    <em>Hello</em>, world!
+
+$if paths
+    <div>$paths</div>
+</body>
+</html>

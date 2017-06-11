@@ -1,4 +1,4 @@
-$def with (source, destination, paths)
+$def with (source, destination, path)
 
 <html>
     <head>
@@ -6,12 +6,9 @@ $def with (source, destination, paths)
     </head>
 <body>
 
-$if source && destination:
     here are the flghts from $source to $destination.
-$else:
-    <em>Hello</em>, world!
+    $path
 
-$if paths
-    <div>$paths</div>
+
 </body>
 </html>

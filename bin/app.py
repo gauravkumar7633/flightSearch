@@ -15,7 +15,7 @@ class Index(object):
              'kolkatta': ['delhi', 'chennai', 'panji', 'mumbai'],
              'mumbai': ['delhi', 'chennai', 'kolkatta', 'panji']}
 
-    def find_all_paths(graph, start, end, path=[]):
+    def find_all_paths(self, graph, start, end, path=[]):
         path = path + [start]
         if start == end:
             return [path]
@@ -24,12 +24,12 @@ class Index(object):
         paths = []
         for node in graph[start]:
             if node not in path:
-                newpaths = self.find_all_paths(graph, node, end, path)
+                newpaths = self.find_all_paths(self.graph, node, end, path)
                 for newpath in newpaths:
                     paths.append(newpath)
         return paths
 
-    def compare(a, b):
+    def compare(self, a, b):
         if(len(a) > len(b)):
             return 1
         else :
@@ -38,20 +38,25 @@ class Index(object):
     def GET(self):
         return render.hello_form()
 
+    def getPath(self, start, end):
+        return self.find_all_paths(self.graph, start, end)
+
     def POST(self):
         form = web.input(name="Nobody", greet="Hello")
         source = "%s" % (form.source)
         destination = "%s" % (form.destination)
 
-        paths = self.find_all_paths(self.graph, source, destination)
+        paths = self.find_all_paths(self.graph, form.source, form.destination)
         paths.sort(self.compare)
-        pathList = '<ul>'
+        print(paths)
+        pathList = '\n'
         for path in paths:
-            pathList += '<li>'
-            pathList += '->'.join(path)
-            pathList += '</li>'
-        pathList = '</ul>'
-        return render.index(source = source, destination = destination, paths=pathList)
+            p = '->'.join(path)
+            pathList += p
+            pathList += '\n'
+
+        path1 = '->'.join(path)
+        return render.index(source = source, destination = destination, path = pathList )
 
 if __name__ == "__main__":
     app.run()

@@ -1,7 +1,7 @@
 import web
 
 urls = (
-  '/hello', 'Index'
+  '/booking', 'Index'
 )
 
 graph = {'Delhi': ['Vasco de Gama', 'Chennai', 'Kolkatta', 'Mumbai'],

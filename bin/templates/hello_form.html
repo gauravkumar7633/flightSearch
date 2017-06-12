@@ -9,7 +9,7 @@ $def with (cities, error)
 
 $if error != 'true':
 	$error
-<form action="/hello" method="POST">
+<form action="/booking" method="POST">
     Source: <select name="source" style="text-transform: capitalize;">
     	<option value="" disabled selected>Select your source </option>
     	$for city in cities:
